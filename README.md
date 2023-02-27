@@ -1,6 +1,13 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Live Website
+[https://saartebook.vercel.app/](https://saartebook.vercel.app/
+)
+## Screenshots
+![SaartebookingPage](https://user-images.githubusercontent.com/62474138/221491196-d9c28478-f2ed-45ad-a2c7-142f0eb1299a.png)
 
-## Getting Started
+![saarteConfr](https://user-images.githubusercontent.com/62474138/221491227-885995a4-280d-47e8-8445-5deccb9e6127.png)
+
+### Getting Started
 
 First, run the development server:
 

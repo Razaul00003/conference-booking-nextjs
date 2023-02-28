@@ -2,11 +2,8 @@ import React from "react";
 
 const MinuteInput = ({ onClick, setCalendar }) => {
   const inputChangeHandler = (e) => {
-    if (e.key === "Enter") {
-      setCalendar(true);
-      console.log(e.key);
-      onClick(e.target.value);
-    }
+    setCalendar(true);
+    onClick(e.target.value);
   };
   return (
     <div className="my-5 text-center  ">
@@ -17,8 +14,7 @@ const MinuteInput = ({ onClick, setCalendar }) => {
           </p>
           <input
             type="text"
-            onChange={(e) => onClick(e.target.value)}
-            onKeyPress={inputChangeHandler}
+            onChange={inputChangeHandler}
             className=" text-center font-bold text-2xl text-gra w-full md:w-2/12 mt-4 px-1 py-2 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             placeholder="Minute"
           />

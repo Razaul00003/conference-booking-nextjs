@@ -35,8 +35,10 @@ export default function Home() {
   const [min, setMin] = useState(null);
   const [date, setDate] = useState(null);
   const [dateAvailable, setDateAvailable] = useState(null);
+  const [showCalendar, setShowCalendar] = useState(false);
   const [bookedFor, setBookedFor] = useState(null);
   const slotDate = new Date(Slots.schedule[0].start);
+
   const minInputHandler = (min) => {
     setMin(min);
   };
@@ -45,6 +47,9 @@ export default function Home() {
     if (date) {
       checkAvailibity();
     }
+  };
+  const showCalenderHandler = (status) => {
+    setShowCalendar(status);
   };
 
   const checkAvailibity = () => {
@@ -69,7 +74,7 @@ export default function Home() {
         min,
       };
       setBookedFor(data);
-    } else console.alert("Kindly, Fill all necessary Info!");
+    }
   };
 
   return (
@@ -88,43 +93,50 @@ export default function Home() {
           {/* show current time  */}
           <Clock />
           {/* input from user  */}
-          <MinuteInput onClick={minInputHandler} />
+          <MinuteInput
+            setCalendar={showCalenderHandler}
+            onClick={minInputHandler}
+          />
           <section className="w-10/12 mx-auto">
             <div className=" flex flex-col lg:flex-row  justify-around">
               {/* main components  */}
               <div className="flex-1">
                 <p className="text-white font-medium">Select Data</p>
                 <div className="p-4">
-                  <CalendarComponent onClick={dateInputHandler} />
+                  {showCalendar && (
+                    <CalendarComponent onClick={dateInputHandler} />
+                  )}
                 </div>
               </div>
               {/* select time slot */}
               <div className="flex-1">
                 <p className="text-white font-medium">Select Time slot </p>
                 <div className="my-auto p-4">
-                  <div className="grid grid-rows-4 place-items-center grid-cols-3 content-center justify-center gap-2 ">
-                    {[
-                      "8:00 AM",
-                      "9:00 AM",
-                      "10:00 AM",
-                      "11:00 AM",
-                      "12:00 PM",
-                      "13:00 PM",
-                      "14:00 PM",
-                      "15:00 PM",
-                      "16:00 PM",
-                      "17:00 PM",
-                      "18:00 PM",
-                      "19:00 PM",
-                    ].map((slot, i) => (
-                      <TimeSlot
-                        onClick={slotHandler}
-                        calendar={dateAvailable}
-                        slot={slot}
-                        key={i}
-                      />
-                    ))}
-                  </div>
+                  {date && (
+                    <div className="grid grid-rows-4 place-items-center grid-cols-3 content-center justify-center gap-2 ">
+                      {[
+                        "8:00 AM",
+                        "9:00 AM",
+                        "10:00 AM",
+                        "11:00 AM",
+                        "12:00 PM",
+                        "13:00 PM",
+                        "14:00 PM",
+                        "15:00 PM",
+                        "16:00 PM",
+                        "17:00 PM",
+                        "18:00 PM",
+                        "19:00 PM",
+                      ].map((slot, i) => (
+                        <TimeSlot
+                          onClick={slotHandler}
+                          calendar={dateAvailable}
+                          slot={slot}
+                          key={i}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -138,16 +150,18 @@ export default function Home() {
           </div>
           <div>
             <div className="text-right w-3/4 mx-auto ">
-              <div className="  text-white w-1/12 ml-auto font-bold  rounded">
+              <div className="   text-white w-1/12 ml-auto font-bold  rounded">
                 {min && date && bookedFor ? (
                   <Modal info={bookedFor} />
                 ) : (
-                  <button
-                    disabled
-                    className="bg-gray-500 rounded-full px-4 py-2 text-white cursor-not-allowed"
-                  >
-                    Book
-                  </button>
+                  <>
+                    <button
+                      onClick={() => alert("Duration, Date and Time required")}
+                      className=" bg-gray-500 rounded-full px-4 py-2 text-white cursor-not-allowed "
+                    >
+                      Book
+                    </button>
+                  </>
                 )}
               </div>
             </div>

@@ -22,7 +22,6 @@ const Slots = {
 
 const TimeSlot = ({ slot, calendar, onClick }) => {
   const dataFromProp = Number(slot.split(":")[0]);
-  const [active, setActive] = useState(false);
 
   const dateStart = new Date(calendar?.start);
   const dateEnd = new Date(calendar?.end);
@@ -34,7 +33,6 @@ const TimeSlot = ({ slot, calendar, onClick }) => {
 
   const slotSeletionHandler = (e) => {
     onClick(e.target.value);
-    setActive(true);
   };
   return (
     <div className="">
@@ -47,9 +45,7 @@ const TimeSlot = ({ slot, calendar, onClick }) => {
         }
         className={` ${
           available.includes(dataFromProp)
-            ? active
-              ? "bg-orange-500 text-white  mb-0 text-sm  md:mb-2  py-1 px-1 md:py-2  border rounded-full"
-              : " bg-white mb-0 text-sm  md:mb-2  py-1 px-1 md:py-2  border rounded-full"
+            ? " bg-white mb-0 text-sm  md:mb-2  py-1 px-1 md:py-2  border rounded-full"
             : "cursor-not-allowed  bg-gray-100    mb-0 text-sm  md:mb-2  py-1 px-1 md:py-2  border rounded-full"
         }`}
       >

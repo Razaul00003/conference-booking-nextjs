@@ -10,10 +10,9 @@ const Clock = () => {
       clearInterval(interval);
     };
   }, []);
-
+  //
   return (
     <div>
-      {/*  {`${time.toLocaleTimeString()}`} */}
       <p className="font-bold text-2xl text-center ">
         Time Now: {`${time.toLocaleTimeString()}`}
       </p>

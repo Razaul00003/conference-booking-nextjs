@@ -52,7 +52,7 @@ function Modal({ info }) {
                     Your Booking Time
                   </p>
                   <p>
-                    Date : {info.date.getMonth() + 1}, {info.date.getDate()},{" "}
+                    Date : {info.date.getDate()}/{info.date.getMonth() + 1}/
                     {info.date.getFullYear()}
                   </p>
                   <p>Time : {info.time}</p>

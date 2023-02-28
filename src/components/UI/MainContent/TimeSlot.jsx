@@ -32,7 +32,7 @@ const TimeSlot = ({ slot, calendar, onClick }) => {
   const available = array.filter((i) => i >= hourStart && i <= hourEnd);
 
   const slotSeletionHandler = (e) => {
-    onClick(e.target.value);
+    available.includes(dataFromProp) && onClick(e.target.value);
   };
   return (
     <div className="">
